@@ -57,7 +57,7 @@ const App = () => {
         body: formData,
       });
 
-      const data = await response.json();
+      const data = await response.text();
       setTranscription(data.transcription || 'No text returned.');
     } catch (err) {
       console.error('Transcription error:', err);
