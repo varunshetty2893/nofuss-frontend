@@ -62,6 +62,7 @@ const App = () => {
     e.preventDefault();
   };
 
+  // Updated for user-facing error messages
   const handleTranscribe = async () => {
     if (!selectedFile) return;
     setIsLoading(true);
@@ -78,12 +79,19 @@ const App = () => {
       );
 
       const text = await response.text();
-      setTranscription(text || 'No text returned.');
+
+      if (response.status === 413) {
+        setTranscription('File too large. Please pick a file under 20 MB.');
+      } else if (response.status === 415) {
+        setTranscription('Unsupported file type. Please upload mp3, mp4, mpeg, mpga, m4a, wav, or webm.');
+      } else if (!response.ok) {
+        setTranscription('An error occurred during transcription. Please try again.');
+      } else {
+        setTranscription(text || 'No text returned.');
+      }
     } catch (err) {
       console.error('Transcription error:', err);
-      const errText = await err.response?.text?.();
-      console.log('Raw error response:', errText);
-      setTranscription('An error occurred during transcription.');
+      setTranscription('An error occurred while connecting to the server.');
     } finally {
       setIsLoading(false);
     }
