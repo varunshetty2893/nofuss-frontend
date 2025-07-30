@@ -61,6 +61,8 @@ const App = () => {
       setTranscription(data.transcription || 'No text returned.');
     } catch (err) {
       console.error('Transcription error:', err);
+      const errorText = await err.response?.text?.();        // try to capture backend error
+      console.log('Raw error response:', errorText);         // NEW
       setTranscription('An error occurred during transcription.');
     } finally {
       setIsLoading(false);
