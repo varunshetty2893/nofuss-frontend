@@ -138,7 +138,7 @@ const handleCopy = () => {
 
       <textarea
   value={transcription}
-  placeholder="Your transcription will appear here..."
+  placeholder="Your transcript will appear here..."
   readOnly
 />
 
