@@ -27,21 +27,18 @@ const App = () => {
   const handleFileSelect = (file) => {
     if (!file) return;
 
-    // 🚫 Reject too‑large files
     if (file.size > MAX_FILE_SIZE) {
       alert('File too large—please pick one under 20 MB.');
       return;
     }
-    // 🚫 Reject invalid extensions
     if (!isValidAudioFile(file.name)) {
       alert('Please upload a valid audio file.');
       return;
     }
 
     setSelectedFile(file);
-    setTranscription(''); // clear any previous transcript
+    setTranscription('');
 
-    // get duration
     const audio = document.createElement('audio');
     audio.src = URL.createObjectURL(file);
     audio.addEventListener('loadedmetadata', () => {
@@ -62,7 +59,6 @@ const App = () => {
     e.preventDefault();
   };
 
-  // Updated for user-facing error messages
   const handleTranscribe = async () => {
     if (!selectedFile) return;
     setIsLoading(true);
@@ -72,7 +68,6 @@ const App = () => {
     formData.append('file', selectedFile);
 
     try {
-      console.log('Calling:', `${process.env.REACT_APP_API_BASE_URL}/transcribe`);
       const response = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}/transcribe`,
         { method: 'POST', body: formData }
@@ -85,7 +80,7 @@ const App = () => {
       } else if (response.status === 415) {
         setTranscription('Unsupported file type. Please upload mp3, mp4, mpeg, mpga, m4a, wav, or webm.');
       } else if (response.status === 429) {
-        setTranscription('Too many requests. Please wait a minute and try again.');  
+        setTranscription('Too many requests. Please wait a minute and try again.');
       } else if (!response.ok) {
         setTranscription('An error occurred during transcription. Please try again.');
       } else {
@@ -191,6 +186,12 @@ const App = () => {
           </button>
         </div>
       )}
+
+      <footer className="footer-legal">
+        <small>
+          Your audio files are sent securely to OpenAI's Whisper for processing. Neither the files nor the transcripts are stored anywhere.
+          This service is provided as-is for personal, non-commercial use only. Do not upload sensitive or confidential information.        </small>
+      </footer>
     </div>
   );
 };
