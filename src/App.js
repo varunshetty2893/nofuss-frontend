@@ -84,6 +84,8 @@ const App = () => {
         setTranscription('File too large. Please pick a file under 20 MB.');
       } else if (response.status === 415) {
         setTranscription('Unsupported file type. Please upload mp3, mp4, mpeg, mpga, m4a, wav, or webm.');
+      } else if (response.status === 429) {
+        setTranscription('Too many requests. Please wait a minute and try again.');  
       } else if (!response.ok) {
         setTranscription('An error occurred during transcription. Please try again.');
       } else {
