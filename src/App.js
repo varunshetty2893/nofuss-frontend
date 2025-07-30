@@ -110,7 +110,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <h1>The No‑Fuss Transcriber</h1>
+      <h1>The No Fuss Transcriber</h1>
       <p>
         <a
           href="https://www.varunshetty.com"
@@ -192,8 +192,8 @@ const App = () => {
 
       <footer className="footer-legal">
         <small>
-          Your audio files are sent securely to OpenAI's Whisper for processing. Neither the files nor the transcripts are stored anywhere.
-          This service is provided as-is for personal, non-commercial use only. Do not upload sensitive or confidential information.        </small>
+          Your audio files are sent securely to OpenAI's Whisper for processing. Neither the files nor the transcripts are stored by No Fuss.
+          This service is provided as-is for personal, non-commercial use only.        </small>
       </footer>
     </div>
   );
