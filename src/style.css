@@ -175,3 +175,10 @@ textarea {
   line-height: 1.5;
 }
 
+.supported-formats {
+  color: #444;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+
