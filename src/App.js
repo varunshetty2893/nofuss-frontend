@@ -7,6 +7,13 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [duration, setDuration] = useState(null);
 
+const handleCopy = () => {
+  navigator.clipboard.writeText(transcription)
+    .then(() => alert('Transcript copied to clipboard!'))
+    .catch(err => console.error('Failed to copy:', err));
+ };
+
+
   const isValidAudioFile = (filename) => {
     const validExtensions = ['mp3', 'wav', 'ogg', 'flac', 'm4a', 'aac', 'wma', 'webm', 'mp4', 'mov'];
     const extension = filename.split('.').pop().toLowerCase();
@@ -109,6 +116,12 @@ const App = () => {
         placeholder="Your transcription will appear here..."
         readOnly
       />
+
+      {transcription && (
+        <button onClick={handleCopy} className="copy-button">
+          Copy to Clipboard
+        </button>
+      )}    
     </div>
   );
 };
