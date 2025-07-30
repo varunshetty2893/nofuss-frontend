@@ -106,4 +106,20 @@ body {
     border-radius: 6px;
     resize: vertical;
   }
+
+.copy-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.copy-button:hover {
+  background-color: #1aa34a;
+}
+
   
