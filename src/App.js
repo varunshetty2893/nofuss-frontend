@@ -127,6 +127,9 @@ const App = () => {
         onDragOver={handleDragOver}
       >
         <p>Drag & drop your audio file here or upload below</p>
+        <p className="supported-formats">
+            <strong>Supported formats:</strong> mp3, mp4, mpeg, mpga, m4a, wav, webm
+        </p>  
         <input type="file" onChange={handleFileChange} />
       </div>
 
