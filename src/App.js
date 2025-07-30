@@ -58,7 +58,7 @@ const App = () => {
       });
 
       const data = await response.text();
-      setTranscription(data.transcription || 'No text returned.');
+      setTranscription(data || 'No text returned.');
     } catch (err) {
       console.error('Transcription error:', err);
       const errorText = await err.response?.text?.();        // try to capture backend error
