@@ -93,14 +93,14 @@ const handleCopy = () => {
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
-        <p>Drag & drop your audio file here</p>
+        <p>Drag & drop your audio file here or upload below</p>
         <input type="file" id="fileInput" onChange={handleFileChange} />
       </div>
 
       {selectedFile && (
         <div className="file-info">
           <span className="checkmark">✅</span>
-          <strong>{selectedFile.name}</strong> — {duration ? `${duration}s` : 'Loading...'}
+          <strong>{selectedFile.name}</strong> — {duration ? `${duration} seconds` : 'Loading...'}
         </div>
       )}
 
@@ -110,6 +110,23 @@ const handleCopy = () => {
         </button>
         <button onClick={handleStop}>Stop</button>
       </div>
+
+     {/* ✅ Spinner */}
+    {isLoading && (
+    <div className="loader">
+      <svg className="spinner" viewBox="0 0 50 50">
+        <circle
+          className="path"
+          cx="25"
+          cy="25"
+          r="20"
+          fill="none"
+          strokeWidth="5"
+      />
+    </svg>
+    <p>Transcribing...</p>
+  </div>
+)}
 
       <textarea
         value={transcription}
