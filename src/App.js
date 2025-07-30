@@ -59,7 +59,7 @@ const handleCopy = () => {
     formData.append('file', selectedFile);
 
     try {
-      const response = await fetch('${process.env.REACT_APP_API_BASE_URL}/transcribe', {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/transcribe`, {
         method: 'POST',
         body: formData,
       });
