@@ -83,6 +83,14 @@ const handleCopy = () => {
     setIsLoading(false);
   };
 
+  const handleReset = () => {
+  setSelectedFile(null);
+  setTranscription('');
+  setDuration(null);
+  setIsLoading(false);
+  };
+
+
   return (
     <div className="container">
       <h1>The No-Fuss Transcriber</h1>
@@ -129,18 +137,22 @@ const handleCopy = () => {
 )}
 
       <textarea
-        value={transcription}
-        placeholder="Your transcription will appear here..."
-        readOnly
-      />
+  value={transcription}
+  placeholder="Your transcription will appear here..."
+  readOnly
+/>
 
-      {transcription && (
-        <button onClick={handleCopy} className="copy-button">
-          Copy to Clipboard
-        </button>
-      )}    
-    </div>
+{transcription && (
+  <div className="post-actions">
+    <button onClick={handleCopy} className="copy-button">
+      Copy
+    </button>
+    <button onClick={handleReset} className="reset-button">
+      Reset
+    </button>
+  </div>
+)}
+</div>  {/* <-- this closes the main <div className="container"> */}
   );
 };
-
 export default App;
