@@ -151,8 +151,8 @@ const handleCopy = () => {
       Reset
     </button>
   </div>
-)}
-</div>  {/* <-- this closes the main <div className="container"> */}
-  );
+  )}
+</div>
+ );
 };
 export default App;
